@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: shop_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: shop123
+      POSTGRES_DB: shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - shop_db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build:
+      context: ./Bend_ecommerce_nodejs
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./Bend_ecommerce_nodejs/.env
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./Fend_ecommerce_react
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  shop_db_data:
