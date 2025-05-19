@@ -1,10 +1,11 @@
-import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/products";
+import interceptorsInstance from "./interceptors";
+
+const API_URL = "/products";
 
 export const getMyProducts = async () => {
   try {
-    const response = await axios.get(`${API_URL}/my-products`, {
+    const response = await interceptorsInstance.get(`${API_URL}/my-products`, {
       withCredentials: true,
     });
     return response.data.products;
@@ -16,7 +17,7 @@ export const getMyProducts = async () => {
 
 export const getSearchedMyProducts = async (keyword) => {
   try {
-    const response = await axios.get(`${API_URL}/seller/search/${keyword}`, {
+    const response = await interceptorsInstance.get(`${API_URL}/seller/search/${keyword}`, {
       withCredentials: true,
     });
     return response.data.products;
@@ -27,7 +28,7 @@ export const getSearchedMyProducts = async (keyword) => {
 };
 export const deleteProduct = async (id) => {
   try {
-    await axios.delete(`${API_URL}/delProduct/${id}`, {
+    await interceptorsInstance.delete(`${API_URL}/delProduct/${id}`, {
       withCredentials: true,
     });
   } catch (error) {
@@ -37,7 +38,7 @@ export const deleteProduct = async (id) => {
 };
 
 export const addProduct = async (formData) => {
-  const res = await axios.post(`${API_URL}/add`, formData, {
+  const res = await interceptorsInstance.post(`${API_URL}/add`, formData, {
     withCredentials: true,
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const addProduct = async (formData) => {
 
 export const updateProduct = async (id, formData) => {
   try {
-    await axios.put(`${API_URL}/updateProduct/${id}`, formData, {
+    await interceptorsInstance.put(`${API_URL}/updateProduct/${id}`, formData, {
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     });

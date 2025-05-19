@@ -1,11 +1,10 @@
 // services/authService.js
-import axios from "axios";
-
-const API_URL = "http://localhost:3000/api/auth";
+import interceptorsInstance from "./interceptors";
+const API_URL = "/auth";
 
 export const register = async (userData) => {
   try {
-    const response = await axios.post(`${API_URL}/register`, userData, {
+    const response = await interceptorsInstance.post(`${API_URL}/register`, userData, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -19,7 +18,7 @@ export const register = async (userData) => {
 
 export const login = async (credentials) => {
   try {
-    const response = await axios.post(`${API_URL}/login`, credentials, {
+    const response = await interceptorsInstance.post(`${API_URL}/login`, credentials, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,7 +33,7 @@ export const login = async (credentials) => {
 
 export const getProfile = async () => {
   try {
-    const response = await axios.get(`${API_URL}/profile`, {
+    const response = await interceptorsInstance.get(`${API_URL}/profile`, {
       withCredentials: true,
     });
     return response.data;
@@ -46,7 +45,7 @@ export const getProfile = async () => {
 
 export const updateProfile = async (data) => {
   try {
-    const response = await axios.put(`${API_URL}/updateProfile`, data, {
+    const response = await interceptorsInstance.put(`${API_URL}/updateProfile`, data, {
       withCredentials: true,
     });
     return response.data;
@@ -58,7 +57,7 @@ export const updateProfile = async (data) => {
 
 export const logout = async () => {
   try {
-    const response = await axios.post(
+    const response = await interceptorsInstance.post(
       `${API_URL}/logout`,
       {},
       {

@@ -1,10 +1,10 @@
-import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/order";
+import interceptorsInstance from "./interceptors";
+const API_URL = "/order";
 
 export const getOrderHistory = async () => {
   try {
-    const response = await axios.get(`${API_URL}/getorderhistory`, {
+    const response = await interceptorsInstance.get(`${API_URL}/getorderhistory`, {
       withCredentials: true,
     });
     return response.data.orders;
@@ -16,7 +16,7 @@ export const getOrderHistory = async () => {
 
 export const updateOrderStatus = async (orderId, status) => {
   try {
-    const response = await axios.patch(
+    const response = await interceptorsInstance.patch(
       `${API_URL}/seller-orders/${orderId}/status/`,
       { status },
       { withCredentials: true }
@@ -30,7 +30,7 @@ export const updateOrderStatus = async (orderId, status) => {
 
 export const getSellerOrders = async () => {
   try {
-    const response = await axios.get(`${API_URL}/seller-orders`, {
+    const response = await interceptorsInstance.get(`${API_URL}/seller-orders`, {
       withCredentials: true,
     });
     return response.data.orders;
@@ -42,7 +42,7 @@ export const getSellerOrders = async () => {
 
 export const placeOrder = async (orderData) => {
   try {
-    const response = await axios.post(`${API_URL}/placeorder`, orderData, {
+    const response = await interceptorsInstance.post(`${API_URL}/placeorder`, orderData, {
       withCredentials: true,
     });
     return response.data;

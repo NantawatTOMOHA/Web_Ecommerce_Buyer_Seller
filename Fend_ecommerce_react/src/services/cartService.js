@@ -1,10 +1,10 @@
-import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/cart";
+import interceptorsInstance from "./interceptors";
+const API_URL = "/cart";
 
 export const getCartItems = async () => {
   try {
-    const response = await axios.get(`${API_URL}/`, {
+    const response = await interceptorsInstance.get(`${API_URL}/`, {
       withCredentials: true,
     });
     return response.data.items;
@@ -16,7 +16,7 @@ export const getCartItems = async () => {
 
 export const clearCart = async () => {
   try {
-    await axios.delete(`${API_URL}/clear`, {
+    await interceptorsInstance.delete(`${API_URL}/clear`, {
       withCredentials: true,
     });
   } catch (error) {
@@ -27,7 +27,7 @@ export const clearCart = async () => {
 
 export const addToCart = async (productId, quantity) => {
   try {
-    const response = await axios.post(
+    const response = await interceptorsInstance.post(
       `${API_URL}/add`,
       {
         productId,
@@ -49,7 +49,7 @@ export const addToCart = async (productId, quantity) => {
 
 export const updateCartItemQuantity = async (itemId, quantity) => {
   try {
-    const response = await axios.patch(
+    const response = await interceptorsInstance.patch(
       `${API_URL}/items/${itemId}`,
       {
         quantity,
@@ -70,7 +70,7 @@ export const updateCartItemQuantity = async (itemId, quantity) => {
 
 export const deleteCartItem = async (itemId) => {
   try {
-    const response = await axios.delete(`${API_URL}/delItem/${itemId}`, {
+    const response = await interceptorsInstance.delete(`${API_URL}/delItem/${itemId}`, {
       withCredentials: true,
     });
     return response.data;
@@ -82,7 +82,7 @@ export const deleteCartItem = async (itemId) => {
 
 export const getCartResult = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/cart/result", {
+    const response = await interceptorsInstance.get("http://localhost:3000/api/cart/result", {
       withCredentials: true,
     });
     return response.data.items;
