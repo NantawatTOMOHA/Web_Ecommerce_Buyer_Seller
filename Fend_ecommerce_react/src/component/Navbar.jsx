@@ -94,6 +94,9 @@ const Navbar = ({ user, onSignOut }) => {
 
           {/* Menu */}
           <ul className="flex items-center gap-4 ml-10">
+            
+          {(!user || role === "buyer") && (
+            <>
             <li>
               <Link
                 to="/"
@@ -102,7 +105,6 @@ const Navbar = ({ user, onSignOut }) => {
                 Home
               </Link>
             </li>
-            {(!user || role === "buyer") && (
               <li>
                 <Link
                   to="/products"
@@ -111,6 +113,7 @@ const Navbar = ({ user, onSignOut }) => {
                   Product
                 </Link>
               </li>
+              </>
             )}
             {role === "buyer" && (
               <li>
