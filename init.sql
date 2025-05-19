@@ -36,7 +36,7 @@ CREATE TABLE orders (
   address TEXT NOT NULL
 );
 
-CREATE TABLE order_items (
+CREATE TABLE orderitems (
   id SERIAL PRIMARY KEY,
   order_id INTEGER REFERENCES orders(id),
   product_id INTEGER REFERENCES products(id),
