@@ -51,12 +51,20 @@ const ProductDetail = () => {
       <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left Column: Product Image */}
-          <div>
+          <div  className="relative">
             <img
               src={product.image_base64}
               alt={product.name}
-              className="w-full h-auto rounded-lg shadow-md"
+              className={`w-full h-auto rounded-lg shadow-md ${product.quantity === 0 ? 'opacity-50' : ''}`}
+
             />
+            {product.quantity === 0 && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="bg-black bg-opacity-70 text-white text-2xl font-bold px-6 py-3 rounded">
+                  SOLD OUT
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Right Column: Product Details */}
@@ -84,16 +92,19 @@ const ProductDetail = () => {
                 >
                   -
                 </button>
+
                 <input
                   type="number"
+                  readOnly
                   min="1"
                   max={product.quantity}
                   value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="w-16 text-center border-0 py-2 text-lg font-semibold text-gray-800"
+                  className="w-14 h-10  text-center leading-10  border-0 py-2 text-lg font-semibold text-gray-800"
                 />
+                
                 <button
                   onClick={handleIncreaseQuantity}
+                  disabled={product.quantity === 0}
                   className="px-3 py-2 text-lg font-semibold text-gray-700 hover:bg-gray-200"
                 >
                   +
@@ -103,9 +114,10 @@ const ProductDetail = () => {
               {/* Add to Cart Button */}
               <button
                 onClick={handleAddToCart}
+                disabled={product.quantity === 0}
                 className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 focus:outline-none"
               >
-                Add to cart
+                {product.quantity === 0 ? "Out of Stock" : "Add to cart"}
               </button>
             </div>
 
