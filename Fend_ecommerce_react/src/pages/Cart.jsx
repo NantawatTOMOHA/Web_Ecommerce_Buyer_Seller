@@ -28,7 +28,17 @@ const Cart = () => {
   const handleIncrease = async (id, currentQuantity) => {
     try {
       await updateCartItemQuantity(id, currentQuantity + 1);
-      fetchCart();
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                total_price: (item.unit_price * (item.quantity + 1)).toFixed(2),
+              }
+            : item
+        )
+      );
     } catch (err) {
       console.error("Error increasing quantity", err);
     }
@@ -38,7 +48,17 @@ const Cart = () => {
     if (currentQuantity <= 1) return;
     try {
       await updateCartItemQuantity(id, currentQuantity - 1);
-      fetchCart();
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+                total_price: (item.unit_price * (item.quantity - 1)).toFixed(2),
+              }
+            : item
+        )
+      );
     } catch (err) {
       console.error("Error decreasing quantity", err);
     }
@@ -47,7 +67,7 @@ const Cart = () => {
   const handleDelete = async (id) => {
     try {
       await deleteCartItem(id);
-      fetchCart();
+      setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
     } catch (err) {
       console.error("Error deleting item", err);
     }
