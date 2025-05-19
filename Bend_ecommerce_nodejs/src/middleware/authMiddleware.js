@@ -1,26 +1,25 @@
-// src/middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 
 const authenticateSeller = (req, res, next) => {
   try {
-    // ดึง JWT Token จาก Cookie
+
     const token = req.cookies.authToken;
     if (!token) {
       return res.status(401).json({ message: 'No token provided' });
     }
 
-    // ตรวจสอบ Token
+
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: 'Invalid token' });
       }
       
-      // ตรวจสอบว่า user เป็น seller หรือไม่
+
       if (decoded.role !== 'seller') {
         return res.status(403).json({ message: 'Access denied, not a seller' });
       }
 
-      // เก็บข้อมูลผู้ใช้ไว้ใน request สำหรับใช้ใน controller
+
       req.user = decoded;
       next();
     });
