@@ -10,10 +10,10 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import Orders from "./pages/Orders";
-import SellerPoduct from "./pages/SellerProduct";
+import SellerProduct from "./pages/SellerProduct";
 import SellerOrder from "./pages/SellerOrder";
 import Payment from "./pages/Payment";
-
+import { setupInterceptors } from "./services/interceptors";
 const App = () => {
   const [user, setUser] = useState(null);
 
@@ -25,9 +25,11 @@ const App = () => {
         setUser(JSON.parse(storedUser));
       } catch (error) {
         console.error("Invalid JSON in localStorage:", error);
-        localStorage.removeItem("user"); // ลบข้อมูลเสียหาย
+        localStorage.removeItem("user");
       }
     }
+
+    setupInterceptors(handleLogout);
   }, []);
 
   const handleLogin = (userData) => {
@@ -53,7 +55,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/order" element={<Orders />} />
-          <Route path="/seller/products" element={<SellerPoduct />} />
+          <Route path="/seller/products" element={<SellerProduct />} />
           <Route path="/seller/orders" element={<SellerOrder />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>
