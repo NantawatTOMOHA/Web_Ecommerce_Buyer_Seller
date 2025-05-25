@@ -42,11 +42,10 @@ const Products = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
           {products.length > 0 ? (
-            products.map((product, index) => (
+            products.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                delay={index * 200}
               />
             ))
           ) : (
