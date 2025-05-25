@@ -50,18 +50,18 @@ const ProductCarousel = () => {
     <div className="py-10 mb-10">
       <div className="container">
         <div className="text-center mb-10 max-w-[600px] mx-auto">
-          <p data-aos="fade-up" className="text-sm text-primary">
+          <p className="text-sm text-primary">
             Featured Products
           </p>
-          <h1 data-aos="fade-up" className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold">
             Our Top Picks
           </h1>
-          <p data-aos="fade-up" className="text-xs text-gray-400">
+          <p className="text-xs text-gray-400">
             Check out our best-selling products, handpicked for you!
           </p>
         </div>
 
-        <div data-aos="zoom-in">
+        <div>
           <Slider {...settings}>
             {products.map((product, index) => (
                 <ProductCard key={product.id} product={product} delay={index * 200} />
