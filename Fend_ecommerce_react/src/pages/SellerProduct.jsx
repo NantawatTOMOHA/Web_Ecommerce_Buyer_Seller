@@ -16,7 +16,7 @@ const SellerProduct = () => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
-  const [detailProduct, setDetailProduct] = useState(null); // <<== NEW
+  const [detailProduct, setDetailProduct] = useState(null); 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchKeyword = queryParams.get("search");
@@ -99,7 +99,7 @@ const SellerProduct = () => {
               product={product}
               onDelete={handleDelete}
               onEdit={handleEdit}
-              onView={() => setDetailProduct(product)} // <<== NEW
+              onView={() => setDetailProduct(product)} 
             />
           ))}
         </div>
@@ -123,7 +123,7 @@ const SellerProduct = () => {
       {detailProduct && (
         <ProductDetailModal
           product={detailProduct}
-          onClose={() => setDetailProduct(null)} // <<== NEW
+          onClose={() => setDetailProduct(null)} 
         />
       )}
     </div>
