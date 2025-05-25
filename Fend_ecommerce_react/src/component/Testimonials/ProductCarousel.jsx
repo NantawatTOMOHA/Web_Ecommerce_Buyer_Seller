@@ -63,8 +63,8 @@ const ProductCarousel = () => {
 
         <div>
           <Slider {...settings}>
-            {products.map((product, index) => (
-                <ProductCard key={product.id} product={product} delay={index * 200} />
+            {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
             ))}
           </Slider>
         </div>
