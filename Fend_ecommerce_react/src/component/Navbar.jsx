@@ -80,7 +80,7 @@ const Navbar = ({ user, onSignOut }) => {
   const role = user?.user?.role;
 
   return (
-    <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
+    <div className="shadow-md bg-gray-900 text-white duration-200 relative z-40">
       <div className="bg-primary/40 py-2">
         <div className="container flex items-center relative">
           {/* Logo */}
@@ -155,7 +155,7 @@ const Navbar = ({ user, onSignOut }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleSearchSubmit}
-                className="w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 focus:outline-none focus:border-primary dark:border-gray-500 dark:bg-gray-800"
+                className="w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border borde-gray-500 px-2 py-1 focus:outline-none focus:border-primary bg-gray-800"
               />
               <IoMdSearch className="text-gray-500 group-hover:text-primary absolute top-1/2 -translate-y-1/2 right-3" />
               {filteredProducts.length > 0 && (
@@ -186,7 +186,7 @@ const Navbar = ({ user, onSignOut }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleSearchSubmit}
-                className="w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 focus:outline-none focus:border-primary dark:border-gray-500 dark:bg-gray-800"
+                className="w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-500 px-2 py-1 focus:outline-none focus:border-primary bg-gray-800"
               />
               <IoMdSearch className="text-gray-500 group-hover:text-primary absolute top-1/2 -translate-y-1/2 right-3" />
               {filteredProducts.length > 0 && (
@@ -245,7 +245,7 @@ const Navbar = ({ user, onSignOut }) => {
                   {user.user?.username}
                   <FaCaretDown className="transition-all duration-200 group-hover:rotate-180 mt-[2px]" />
                 </span>
-                <div className="absolute right-0 hidden group-hover:block w-[150px] rounded-md bg-white dark:bg-gray-800 p-2 text-black dark:text-white shadow-md z-50">
+                <div className="absolute right-0 hidden group-hover:block w-[150px] rounded-md bg-gray-800 p-2 text-white shadow-md z-50">
                   <ul>
                     <li>
                       <Link
@@ -258,7 +258,7 @@ const Navbar = ({ user, onSignOut }) => {
                     <li>
                       <button
                         onClick={handleLogout}
-                        className="block w-full text-left rounded-md p-2 hover:bg-gray-700 dark:hover:bg-red-200 text-red-800 dark:text-red-500"
+                        className="block w-full text-left rounded-md p-2 hover:bg-red-200 text-red-500"
                       >
                         Sign Out
                       </button>
