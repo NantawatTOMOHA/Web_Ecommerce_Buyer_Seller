@@ -74,7 +74,7 @@ const AddProductModal = ({ onClose, onAdd }) => {
       image_base64: formData.imageBase64,
     };
     console.log("Submitting product payload:", payload);
-    onAdd(payload); // ส่งข้อมูลที่รวม base64 image ไปยังฟังก์ชัน onAdd
+    onAdd(payload); 
   };
 
   return (
