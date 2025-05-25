@@ -5,7 +5,7 @@ const EditProductModal = ({ product, onClose, onUpdate }) => {
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
   const [quantity, setQuantity] = useState(product.quantity);
-  const [imageBase64, setImageBase64] = useState(product.image || null); // รองรับกรณีมีรูปอยู่แล้ว
+  const [imageBase64, setImageBase64] = useState(product.image || null);
 
   const [errors, setErrors] = useState({});
 
