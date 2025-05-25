@@ -21,12 +21,12 @@ const ProductDetail = () => {
       setMessage("Added to cart!");
       setTimeout(() => {
         setMessage("");
-      }, 3000); // Hide message after 3 seconds
+      }, 3000); 
     } catch {
       setMessage("Invalid");
       setTimeout(() => {
         setMessage("");
-      }, 3000); // Hide message after 3 seconds
+      }, 3000); 
     }
   };
 
