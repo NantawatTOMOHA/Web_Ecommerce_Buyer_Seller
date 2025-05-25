@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, delay }) => {
+const ProductCard = ({ product}) => {
   return (
     <Link
       to={`/products/${product.id}`}
-      data-aos="fade-up"
-      data-aos-delay={delay}
       className="space-y-4 cursor-pointer hover:scale-105 transition-transform duration-200 bg-white rounded-lg shadow-md hover:shadow-xl p-4 flex flex-col h-[450px]"
     >
       <div className="relative">
